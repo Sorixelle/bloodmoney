@@ -5,12 +5,6 @@ main: net.thereturningvoid.bloodmoney.BloodMoney
 softdepend: [Vault]
 
 commands:
-  bloodtest:
-    description: Test command for BloodMoney
-    usage: /<command>
   bmreloadconfig:
     description: Reloads the BloodMoney configuration file (plugins/BloodMoney/config.yml)
     usage: /<command>
-  cfgtest:
-    description: kappa
-    usage: memes

@@ -3,21 +3,17 @@ package net.thereturningvoid.bloodmoney;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import net.thereturningvoid.bloodmoney.listeners.PlayerDeathListener;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Map;
 import java.util.logging.Logger;
 
 public class BloodMoney extends JavaPlugin {
 
     public static final Logger log = Logger.getLogger("Minecraft");
-    public static final ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
     public static final String VERSION = "v0.0.1-SNAPSHOT";
     public static final String CHAT_PREFIX = ChatColor.BOLD + "" + ChatColor.GOLD + "[" + ChatColor.DARK_RED + "Blood" + ChatColor.RED + "Money" + ChatColor.GOLD + "]" + ChatColor.RESET + " ";
 
@@ -47,21 +43,14 @@ public class BloodMoney extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("bloodtest")) {
-            sender.sendMessage(CHAT_PREFIX + "BloodMoney " + VERSION + " is good to go!");
-            return true;
-        }
         if (cmd.getName().equalsIgnoreCase("bmreloadconfig")) {
-            this.reloadConfig();
-            sender.sendMessage(CHAT_PREFIX + "Config reloaded!");
-            return true;
-        }
-        if (cmd.getName().equalsIgnoreCase("cfgtest")) {
-            if (getConfig().isConfigurationSection("test2")) {
-                Map<String, Object> values = getConfig().getConfigurationSection("test2").getValues(true);
-                for (Map.Entry<String, Object> value : values.entrySet()) {
-                    sender.sendMessage(CHAT_PREFIX + "" + value.getKey() + " : " + value.getValue());
-                }
+            if (permission.has(sender, "bloodmoney.admin")) {
+                this.reloadConfig();
+                sender.sendMessage(CHAT_PREFIX + "Config reloaded!");
+                return true;
+            } else {
+                sender.sendMessage(CHAT_PREFIX + "You don't have permission to use this command!");
+                return true;
             }
         }
         return false;
