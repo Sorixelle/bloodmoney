@@ -1,0 +1,8 @@
+bloodmoney:
+  ranks:
+    newbie: 25.0
+    member: 50.0
+    staff: 100.0
+  sendMessageToDeadPlayer: true
+  killMessage: You have recieved %m for killing %p
+  deathMessage: You were killed by %p
