@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class BloodMoney extends JavaPlugin {
 
     public static final Logger log = Logger.getLogger("Minecraft");
-    public static final String VERSION = "v0.0.1-SNAPSHOT";
+    public static final String VERSION = "v1.0.0";
     public static final String CHAT_PREFIX = ChatColor.BOLD + "" + ChatColor.GOLD + "[" + ChatColor.DARK_RED + "Blood" + ChatColor.RED + "Money" + ChatColor.GOLD + "]" + ChatColor.RESET + " ";
 
     public Permission permission;
