@@ -1,8 +1,15 @@
 bloodmoney:
   ranks:
-    newbie: 25.0
-    member: 50.0
-    staff: 100.0
+    newbie:
+      gain: 25.0
+      loss: 10.0
+    member:
+      gain: 50.0
+      loss: 5.0
+    staff:
+      gain: 100.0
+      loss: 0.0
   sendMessageToDeadPlayer: true
   killMessage: You have recieved %m for killing %p
   deathMessage: You were killed by %p
+  loseMoneyOnDeath: false
