@@ -1,5 +1,6 @@
 # BloodMoney
 Bukkit plugin that allows players to gain money from killing other players
+
 Download at http://dev.bukkit.org/bukkit-plugins/blood-money/
 
 ## Changelog
