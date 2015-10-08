@@ -29,8 +29,8 @@ public class PlayerDeathListener implements Listener {
     public void onKillPlayer(PlayerDeathEvent e) throws InvalidConfigurationException {
         if (e.getEntityType() == EntityType.PLAYER) {
             Player pKilled = e.getEntity();
-            Player pKilledBy = pKilled.getKiller();
-            if (getRanks() != null) {
+            if (pKilled.getKiller() != null && getRanks() != null) {
+                Player pKilledBy = pKilled.getKiller();
                 if (plugin.getConfig().getBoolean("bloodmoney.sendMessageToDeadPlayer") && !plugin.getConfig().getBoolean("bloodmoney.loseMoneyOnDeath")) {
                     String dMessage = plugin.getConfig().getString("bloodmoney.deathMessage").replace("%p", pKilledBy.getName());
                     pKilled.sendMessage(BloodMoney.CHAT_PREFIX + dMessage);
