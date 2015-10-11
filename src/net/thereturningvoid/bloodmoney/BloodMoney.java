@@ -14,16 +14,18 @@ import java.util.logging.Logger;
 public class BloodMoney extends JavaPlugin {
 
     public static final Logger log = Logger.getLogger("Minecraft");
-    public static final String VERSION = "v1.1.1";
-    public static final String CHAT_PREFIX = ChatColor.BOLD + "" + ChatColor.GOLD + "[" + ChatColor.DARK_RED + "Blood" + ChatColor.RED + "Money" + ChatColor.GOLD + "]" + ChatColor.RESET + " ";
+    public static final String VERSION = "v1.2.0";
 
+    public static String CHAT_PREFIX = "UNDEFINED BLOODMONEY PREFIX! THIS IS A PROBLEM! REPORT TO SERVER STAFF AS SOON AS POSSIBLE!";
     public Permission permission;
     public Economy economy;
     public BloodMoney instance = null;
 
     @Override
     public void onEnable() {
+        instance = this;
         this.saveDefaultConfig();
+        CHAT_PREFIX = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("bloodmoney.customPrefix") + " " + ChatColor.RESET);
         if (!registerEconomy()) {
             log.info(ChatColor.stripColor(CHAT_PREFIX) + "Vault not installed on this server! Disabling.");
             getServer().getPluginManager().disablePlugin(this);
@@ -31,14 +33,13 @@ public class BloodMoney extends JavaPlugin {
         }
         registerPermissions();
         registerListeners();
-        instance = this;
-        log.info(ChatColor.stripColor(CHAT_PREFIX) + "Enabled BloodMoney " + VERSION);
+        log.info("[BloodMoney] Enabled BloodMoney " + VERSION);
     }
 
     @Override
     public void onDisable() {
         instance = null;
-        log.info(ChatColor.stripColor(CHAT_PREFIX) + "Disabled BloodMoney " + VERSION);
+        log.info("[BloodMoney] Disabled BloodMoney " + VERSION);
     }
 
     @Override

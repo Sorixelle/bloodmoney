@@ -9,6 +9,8 @@ bloodmoney:
     staff:
       gain: 100.0
       loss: 0.0
+
+  customPrefix: "&6[&4Blood&cMoney&6]"
   sendMessageToDeadPlayer: true
   killMessage: You have recieved %m for killing %p
   deathMessage: You were killed by %p

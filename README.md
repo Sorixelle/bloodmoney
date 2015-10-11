@@ -4,6 +4,9 @@ Bukkit plugin that allows players to gain money from killing other players
 Download at http://dev.bukkit.org/bukkit-plugins/blood-money/
 
 ## Changelog
+### v.1.2.0
+- Prefix in front of chat messages can now be changed
+
 ### v1.1.1
 - Fixed NPE whenever a player was not killed in pvp (died by drowning, fall damage, etc.)
 
