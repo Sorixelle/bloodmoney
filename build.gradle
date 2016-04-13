@@ -1,0 +1,30 @@
+group 'net.thereturningvoid'
+version '1.2.1'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+
+    maven {
+        name 'Spigot'
+        url 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+
+    maven {
+        name 'BungeeCord'
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+
+    maven {
+        name 'Vault'
+        url 'http://ci.milkbowl.net/plugin/repository/everything/'
+    }
+}
+
+dependencies {
+    compile group:"org.spigotmc", name: "spigot-api", version: "1.9.2-R0.1-SNAPSHOT"
+}

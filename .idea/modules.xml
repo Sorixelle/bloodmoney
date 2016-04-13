@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bloodmoney.iml" filepath="$PROJECT_DIR$/.idea/modules/bloodmoney.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bloodmoney_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bloodmoney_main.iml" group="bloodmoney" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bloodmoney_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bloodmoney_test.iml" group="bloodmoney" />
+    </modules>
+  </component>
+</project>

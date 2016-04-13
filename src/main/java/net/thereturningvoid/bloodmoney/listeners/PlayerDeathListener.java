@@ -29,24 +29,22 @@ public class PlayerDeathListener implements Listener {
     public void onKillPlayer(PlayerDeathEvent e) throws InvalidConfigurationException {
         if (e.getEntityType() == EntityType.PLAYER) {
             Player pKilled = e.getEntity();
+            Player pKilledBy = pKilled.getKiller();
             if (pKilledBy.getName().equals(pKilled.getName())) return;
             if (pKilled.getKiller() != null && getRanks() != null) {
-                Player pKilledBy = pKilled.getKiller();
                 if (plugin.getConfig().getBoolean("bloodmoney.sendMessageToDeadPlayer") && !plugin.getConfig().getBoolean("bloodmoney.loseMoneyOnDeath")) {
                     String dMessage = plugin.getConfig().getString("bloodmoney.deathMessage").replace("%p", pKilledBy.getName());
                     pKilled.sendMessage(BloodMoney.CHAT_PREFIX + dMessage);
                 }
                 for (Map.Entry rank : getRanks().entrySet()) {
-                    if (!(pKilledBy instanceof Player)) {
-                        String rankName = (String) rank.getKey();
-                        if (perm.has(pKilledBy, "bloodmoney.rank." + rank.getKey())) {
-                            EconomyResponse creditPlayer = econ.depositPlayer(pKilledBy, plugin.getConfig().getDouble("bloodmoney.ranks." + rankName + ".gain"));
-                            if (creditPlayer.transactionSuccess()) {
-                                String kMessage = plugin.getConfig().getString("bloodmoney.killMessage").replace("%m", econ.format(creditPlayer.amount)).replace("%p", pKilled.getName());
-                                pKilledBy.sendMessage(BloodMoney.CHAT_PREFIX + kMessage);
-                            } else {
-                                pKilledBy.sendMessage(BloodMoney.CHAT_PREFIX + "Something went wrong and the transaction was unsuccessful.");
-                            }
+                    String rankName = (String) rank.getKey();
+                    if (perm.has(pKilledBy, "bloodmoney.rank." + rank.getKey())) {
+                        EconomyResponse creditPlayer = econ.depositPlayer(pKilledBy, plugin.getConfig().getDouble("bloodmoney.ranks." + rankName + ".gain"));
+                        if (creditPlayer.transactionSuccess()) {
+                            String kMessage = plugin.getConfig().getString("bloodmoney.killMessage").replace("%m", econ.format(creditPlayer.amount)).replace("%p", pKilled.getName());
+                            pKilledBy.sendMessage(BloodMoney.CHAT_PREFIX + kMessage);
+                        } else {
+                            pKilledBy.sendMessage(BloodMoney.CHAT_PREFIX + "Something went wrong and the transaction was unsuccessful.");
                         }
                     }
                     if (plugin.getConfig().getBoolean("bloodmoney.loseMoneyOnDeath")) {
