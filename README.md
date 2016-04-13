@@ -4,7 +4,10 @@ Bukkit plugin that allows players to gain money from killing other players
 Download at http://dev.bukkit.org/bukkit-plugins/blood-money/
 
 ## Changelog
-### v.1.2.0
+### v1.2.1
+- Added check to not trigger money gain if the player killed themselves
+
+### v1.2.0
 - Prefix in front of chat messages can now be changed
 
 ### v1.1.1
